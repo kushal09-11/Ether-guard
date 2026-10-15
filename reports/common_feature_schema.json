@@ -1,0 +1,574 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Canonical Common Feature Schema bridging the Kaggle Ethereum Fraud Dataset and the live Etherscan API V2 pipeline for Phase 2 model training and Phase 3 inference.",
+  "total_recommended_features": 24,
+  "feature_selection_rationale": "Selected 24 high-integrity features that are mathematically reproducible from Etherscan API V2 (`txlist` and `tokentx`), free from zero-variance degradation, and free from crude heterogeneous token value summing flaws. Excluded pure identifiers, zero-variance constants, high-cardinality transient token strings, and unscaled token amounts.",
+  "etherscan_api_version": "API V2 (https://docs.etherscan.io/)",
+  "features": [
+    {
+      "canonical_feature_name": "avg_min_between_sent_tnx",
+      "data_type": "float64",
+      "unit": "Minutes",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Filter normal transactions where `from == wallet_address` and `isError == '0'`. Sort ascending by `timeStamp`. If count <= 1, return 0.0. Else: (max(timeStamp) - min(timeStamp)) / (60.0 * (count - 1)).",
+      "required_source_fields": [
+        "from",
+        "to",
+        "timeStamp",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Avg min between sent tnx",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Etherscan returns max 10,000 transactions per query without pagination. Truncation on high-volume wallets would underestimate or overestimate interval."
+      }
+    },
+    {
+      "canonical_feature_name": "avg_min_between_received_tnx",
+      "data_type": "float64",
+      "unit": "Minutes",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Filter normal transactions where `to == wallet_address` and `isError == '0'`. Sort ascending by `timeStamp`. If count <= 1, return 0.0. Else: (max(timeStamp) - min(timeStamp)) / (60.0 * (count - 1)).",
+      "required_source_fields": [
+        "to",
+        "timeStamp",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Avg min between received tnx",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Captures only normal incoming transfers. Inflows from smart contracts (DEX, mining) are omitted unless `txlistinternal` is used, matching training dataset generation."
+      }
+    },
+    {
+      "canonical_feature_name": "time_diff_first_last_mins",
+      "data_type": "float64",
+      "unit": "Minutes",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Across all normal transactions in `txlist`: if len(txlist) <= 1, return 0.0. Else: (max(timeStamp) - min(timeStamp)) / 60.0.",
+      "required_source_fields": [
+        "timeStamp",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Time Diff between first and last (Mins)",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Reflects wallet longevity. If a wallet has only 1 transaction, active window is 0. Pagination required for wallets with >10,000 transactions to capture true first transaction."
+      }
+    },
+    {
+      "canonical_feature_name": "sent_tnx",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Count of records in `txlist` where `from == wallet_address` and `isError == '0'`.",
+      "required_source_fields": [
+        "from",
+        "to",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Sent tnx",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Exact match with normal external transaction history."
+      }
+    },
+    {
+      "canonical_feature_name": "received_tnx",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Count of records in `txlist` where `to == wallet_address` and `isError == '0'`.",
+      "required_source_fields": [
+        "to",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Received Tnx",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Matches training dataset's normal transaction incoming count."
+      }
+    },
+    {
+      "canonical_feature_name": "created_contracts_count",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "Count records in `txlist` where `from == wallet_address` and (`to == ''` or `to is None` or `to == '0x'` or `contractAddress != ''`).",
+      "required_source_fields": [
+        "from",
+        "to",
+        "contractAddress",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Number of Created Contracts",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Standard contracts deployed by wallet. Essential indicator for scam factory detection."
+      }
+    },
+    {
+      "canonical_feature_name": "unique_received_from_addresses",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "len(set(tx['from'].lower() for tx in txlist if tx['to'].lower() == wallet_address.lower()))",
+      "required_source_fields": [
+        "from",
+        "to",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Unique Received From Addresses",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Measures sender diversity and fan-in structure."
+      }
+    },
+    {
+      "canonical_feature_name": "unique_sent_to_addresses",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "len(set(tx['to'].lower() for tx in txlist if tx['from'].lower() == wallet_address.lower() and tx.get('to')))",
+      "required_source_fields": [
+        "from",
+        "to",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "Unique Sent To Addresses",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Measures recipient diversity and fan-out structure."
+      }
+    },
+    {
+      "canonical_feature_name": "min_value_received_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "min([float(tx['value'])/1e18 for tx in incoming_txlist]) if incoming_txlist else 0.0",
+      "required_source_fields": [
+        "to",
+        "value",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "min value received",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Requires converting Wei to Ether by dividing by 10^18."
+      }
+    },
+    {
+      "canonical_feature_name": "max_value_received_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "max([float(tx['value'])/1e18 for tx in incoming_txlist]) if incoming_txlist else 0.0",
+      "required_source_fields": [
+        "to",
+        "value",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "max value received ",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Requires dividing Wei by 10^18. Raw column name contains trailing whitespace in CSV."
+      }
+    },
+    {
+      "canonical_feature_name": "avg_value_received_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "sum([float(tx['value'])/1e18 for tx in incoming_txlist]) / len(incoming_txlist) if incoming_txlist else 0.0",
+      "required_source_fields": [
+        "to",
+        "value",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "avg val received",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Requires dividing Wei by 10^18."
+      }
+    },
+    {
+      "canonical_feature_name": "min_value_sent_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "min([float(tx['value'])/1e18 for tx in outgoing_txlist]) if outgoing_txlist else 0.0",
+      "required_source_fields": [
+        "from",
+        "to",
+        "value",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "min val sent",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Zero-value contract interaction transactions return 0.0."
+      }
+    },
+    {
+      "canonical_feature_name": "max_value_sent_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "max([float(tx['value'])/1e18 for tx in outgoing_txlist]) if outgoing_txlist else 0.0",
+      "required_source_fields": [
+        "from",
+        "to",
+        "value",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "max val sent",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Requires dividing Wei by 10^18."
+      }
+    },
+    {
+      "canonical_feature_name": "avg_value_sent_eth",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "sum([float(tx['value'])/1e18 for tx in outgoing_txlist]) / len(outgoing_txlist) if outgoing_txlist else 0.0",
+      "required_source_fields": [
+        "from",
+        "to",
+        "value",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "avg val sent",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Requires dividing Wei by 10^18."
+      }
+    },
+    {
+      "canonical_feature_name": "total_transactions_count",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Unresolved (inherits underlying sent/received failed tx uncertainty)",
+      "calculation_formula": "len(txlist) or (sent_tnx + received_tnx + created_contracts_count)",
+      "required_source_fields": [
+        "from",
+        "to",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "total transactions (including tnx to create contract",
+      "unresolved_issues_and_risks": "Algebraically redundant: exactly equals sent_tnx + received_tnx + created_contracts_count. Multicollinear in linear models.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Exact linear combination of sent, received, and contract creation counts."
+      }
+    },
+    {
+      "canonical_feature_name": "total_ether_sent",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Not verifiable from the available dataset",
+      "failed_transaction_handling": "Unresolved (raw transaction logs and isError flags discarded in CSV)",
+      "calculation_formula": "sum([float(tx['value'])/1e18 for tx in outgoing_txlist])",
+      "required_source_fields": [
+        "from",
+        "to",
+        "value",
+        "isError",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "total Ether sent",
+      "unresolved_issues_and_risks": "The Kaggle dataset does not document whether failed transactions (isError == '1') were excluded or included in counts, intervals, and value statistics. Cannot be determined from tabular data alone.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Does not include gas fees paid."
+      }
+    },
+    {
+      "canonical_feature_name": "total_ether_received",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Unresolved (cannot verify if failed incoming txs were counted)",
+      "calculation_formula": "sum([float(tx['value'])/1e18 for tx in incoming_txlist])",
+      "required_source_fields": [
+        "to",
+        "value",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "total ether received",
+      "unresolved_issues_and_risks": "Omits incoming ETH from internal transactions (DEX swaps, contract withdrawals, mining). Inclusion of attempted values from failed transactions cannot be established.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address}",
+        "reproducibility": "Exact",
+        "notes": "Captures only normal transactions. Inflows from smart contracts (DEX, mining) are omitted to strictly reproduce training dataset distribution."
+      }
+    },
+    {
+      "canonical_feature_name": "total_ether_balance",
+      "data_type": "float64",
+      "unit": "Ether (ETH)",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Unresolved (inherits underlying sent/received failed tx uncertainty)",
+      "calculation_formula": "Formula: `total_ether_received - total_ether_sent`. DO NOT use Etherscan `balance` endpoint directly, as live balance is >= 0 while dataset contains negative balances down to -15.6M ETH due to missing internal txs.",
+      "required_source_fields": [
+        "from",
+        "to",
+        "value",
+        "isError"
+      ],
+      "source_endpoint": "module=account&action=txlist&address={address} (reconstructed net flow)",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": "total ether balance",
+      "unresolved_issues_and_risks": "Synthetic flow formula (received - sent). Cannot match true on-chain EVM balance. Omits internal transactions, yielding 978 negative balances.",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=txlist&address={address} (reconstructed net flow)",
+        "reproducibility": "Approximate / Semantic Conflict",
+        "notes": "CRITICAL TRAIN-INFERENCE RISK: The true EVM balance is never negative. Using live balance creates severe covariate shift. Live pipeline MUST compute the formula `total_ether_received - total_ether_sent` to match training semantics."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_total_tnx",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(tokentx_list)",
+      "required_source_fields": [
+        "from",
+        "to",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " Total ERC20 tnxs",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Requires calling a dedicated secondary endpoint. For wallets with 0 token transfers, value must be 0.0 (imputed), avoiding target leakage."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_unique_sent_addr",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(set(tx['to'].lower() for tx in tokentx if tx['from'].lower() == wallet.lower() and tx.get('to')))",
+      "required_source_fields": [
+        "from",
+        "to"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " ERC20 uniq sent addr",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Measures token transfer recipient diversity."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_unique_received_addr",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(set(tx['from'].lower() for tx in tokentx if tx['to'].lower() == wallet.lower()))",
+      "required_source_fields": [
+        "from",
+        "to"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " ERC20 uniq rec addr",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Measures token transfer sender diversity."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_unique_received_contract_addr",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(set(tx['contractAddress'].lower() for tx in tokentx if tx['to'].lower() == wallet.lower()))",
+      "required_source_fields": [
+        "to",
+        "contractAddress"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " ERC20 uniq rec contract addr",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Measures token portfolio breadth and airdrop exposure."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_unique_sent_token_name",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(set(tx['tokenSymbol'] for tx in tokentx if tx['from'].lower() == wallet.lower()))",
+      "required_source_fields": [
+        "from",
+        "tokenSymbol"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " ERC20 uniq sent token name",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Count of distinct outbound token symbols."
+      }
+    },
+    {
+      "canonical_feature_name": "erc20_unique_received_token_name",
+      "data_type": "int64",
+      "unit": "Count",
+      "parity_tier": "Approximate equivalent",
+      "failed_transaction_handling": "Excluded by EVM semantics (tokentx event logs emit only on successful execution)",
+      "calculation_formula": "len(set(tx['tokenSymbol'] for tx in tokentx if tx['to'].lower() == wallet.lower()))",
+      "required_source_fields": [
+        "to",
+        "tokenSymbol"
+      ],
+      "source_endpoint": "module=account&action=tokentx&address={address}",
+      "missing_value_policy": "Default to 0.0 if no qualifying transactions exist.",
+      "observation_period": "Full wallet transaction history (from genesis transaction to latest block).",
+      "training_dataset_mapping": " ERC20 uniq rec token name",
+      "unresolved_issues_and_risks": "829 fraud rows have NaN in training data. Zero-imputation is a pragmatic modeling assumption, not confirmed on-chain ground truth. erc20_unique_received_contract_addr is highly collinear with erc20_unique_received_token_name (r = 0.9996).",
+      "etherscan_data_mapping": {
+        "endpoint": "module=account&action=tokentx&address={address}",
+        "reproducibility": "Exact (via ERC20 endpoint)",
+        "notes": "Count of distinct inbound token symbols (airdrop spam, tokens)."
+      }
+    }
+  ],
+  "recommendations_and_limitations": {
+    "negative_balance_resolution": "The training dataset computed balance as `total_ether_received - total_ether_sent` without accounting for internal contract transactions. Live inference MUST compute this exact same net flow formula rather than using Etherscan's `balance` endpoint.",
+    "erc20_zero_imputation": "Wallets with zero ERC-20 activity must have their token features imputed to 0.0. A missingness indicator must never be added to avoid target leakage.",
+    "pagination_policy": "For wallets exceeding 10,000 transactions, Etherscan API V2 block pagination (`startblock` and `endblock`) is required to capture the entire activity lifespan."
+  }
+}

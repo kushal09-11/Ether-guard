@@ -1,0 +1,253 @@
+feature,importance,method,model_name,feature_set
+time_diff_first_last_mins,0.18958855911501576,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+sent_tnx,0.09126465094993874,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+total_transactions_count,0.07609385770191646,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+avg_value_sent_eth,0.06472666937675146,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_unique_sent_addr,0.06369628444484705,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+avg_value_received_eth,0.05847735885370157,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_unique_received_token_name,0.05702934883150518,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+unique_received_from_addresses,0.04627389108212443,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+total_ether_balance,0.04403235009658893,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+unique_sent_to_addresses,0.04323307559417091,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+max_value_received_eth,0.03985367408148397,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_unique_received_contract_addr,0.03869441208281245,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+received_tnx,0.03718125732035737,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_total_tnx,0.033275790590604384,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+min_value_sent_eth,0.03038248497316918,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+avg_min_between_sent_tnx,0.022700489351498817,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+max_value_sent_eth,0.022665137269538862,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_unique_received_addr,0.01572052305693393,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+erc20_unique_sent_token_name,0.013550724155294808,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+total_ether_received,0.005899416368188322,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+avg_min_between_received_tnx,0.0035012713504891406,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+created_contracts_count,0.0010529619398570397,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+total_ether_sent,0.0010406088918917809,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+min_value_received_eth,6.52025213194555e-05,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Canonical 24 Features
+total_ether_received,0.3706766811002391,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+time_diff_first_last_mins,0.2263262133887589,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+unique_received_from_addresses,0.10768673302395414,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+min_value_received_eth,0.081053070492917,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_total_tnx,0.05544721542043957,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+total_ether_balance,0.043648802303493904,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+min_value_sent_eth,0.034340730223265926,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+created_contracts_count,0.01705972080765528,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_unique_received_token_name,0.016840452872077506,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+total_transactions_count,0.015073984593347729,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+avg_min_between_received_tnx,0.009365200370588007,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+avg_min_between_sent_tnx,0.00894621246489612,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_unique_sent_addr,0.005851551858440476,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+avg_value_received_eth,0.003951205049615008,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+sent_tnx,0.00217551408881624,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_unique_received_contract_addr,0.0015567119414950622,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+unique_sent_to_addresses,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+received_tnx,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+max_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+max_value_received_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+total_ether_sent,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+avg_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_unique_received_addr,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+erc20_unique_sent_token_name,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Canonical 24 Features
+time_diff_first_last_mins,0.1402321644234596,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+avg_value_received_eth,0.09545528582721792,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+total_ether_received,0.08886620023688058,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+avg_min_between_received_tnx,0.07461469470029815,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+unique_received_from_addresses,0.06760007711165185,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+total_ether_sent,0.06427670228393026,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+max_value_received_eth,0.05779063767844463,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+total_ether_balance,0.0554724009603527,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+min_value_received_eth,0.04639999544468673,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+sent_tnx,0.04127822061177686,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+total_transactions_count,0.03915258505775588,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+received_tnx,0.03867818312590871,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+max_value_sent_eth,0.029260473352777868,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_total_tnx,0.024905818308566786,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+avg_min_between_sent_tnx,0.02355765316949762,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_unique_received_contract_addr,0.019714184141145622,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_unique_received_addr,0.01824408951421548,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+min_value_sent_eth,0.01766634979360109,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_unique_received_token_name,0.01738814988749205,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+avg_value_sent_eth,0.016178978176307136,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+unique_sent_to_addresses,0.006702366052792106,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_unique_sent_token_name,0.006040306082396506,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+created_contracts_count,0.005901455240099475,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+erc20_unique_sent_addr,0.004623028818744468,Tree Gini Importance,Random Forest (100 Trees),Canonical 24 Features
+unique_received_from_addresses,0.28911748781808333,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+time_diff_first_last_mins,0.12290200324851103,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+total_transactions_count,0.10665944775311319,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_total_tnx,0.08283703302652946,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+avg_value_received_eth,0.06442880346507841,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+total_ether_received,0.063345966432052,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+total_ether_balance,0.04114780725500808,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+avg_min_between_received_tnx,0.03735787763941523,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+min_value_received_eth,0.035192203573362196,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+min_value_sent_eth,0.023822414726583634,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+sent_tnx,0.023280996210070425,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+avg_min_between_sent_tnx,0.017866811044937748,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+received_tnx,0.017866811044937748,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_unique_received_contract_addr,0.014076881429344807,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+avg_value_sent_eth,0.011911207363291773,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+total_ether_sent,0.011369788846778561,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_unique_sent_addr,0.010286951813752042,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_unique_received_addr,0.010286951813752042,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+max_value_sent_eth,0.007038440714672492,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+created_contracts_count,0.0043313481321061555,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+unique_sent_to_addresses,0.0021656740660531224,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_unique_sent_token_name,0.0016242555495399082,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+max_value_received_eth,0.001082837033026517,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+erc20_unique_received_token_name,0.0,Validation Permutation Importance,HistGradientBoosting,Canonical 24 Features
+time_diff_first_last_mins,0.2075531759101352,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+sent_tnx,0.11478133848743208,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+erc20_unique_received_token_name,0.09692176012725937,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+received_tnx,0.08119858801496568,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+avg_value_sent_eth,0.07118133182765125,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+erc20_unique_sent_addr,0.06933060774296698,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+avg_value_received_eth,0.05967260895092228,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+unique_sent_to_addresses,0.05163019207948772,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+max_value_received_eth,0.04377454527684638,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+unique_received_from_addresses,0.03863712409546471,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+erc20_total_tnx,0.03740555119888654,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+min_value_sent_eth,0.03534322596633114,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+max_value_sent_eth,0.027296772337340548,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+avg_min_between_sent_tnx,0.02514258823365461,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+erc20_unique_received_addr,0.01488983098091768,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+erc20_unique_sent_token_name,0.011380788164847881,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+total_ether_received,0.007426566879947027,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+avg_min_between_received_tnx,0.003891951835874723,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+created_contracts_count,0.0018410363920275282,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+total_ether_sent,0.00048204326809270204,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+min_value_received_eth,0.0002183722289480881,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Reduced 21 Features (No Redundancy)
+total_ether_received,0.3801559844939073,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+time_diff_first_last_mins,0.26941381875454223,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+unique_received_from_addresses,0.10970589444248378,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+min_value_received_eth,0.09591932952002233,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+avg_min_between_received_tnx,0.04773761275540499,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+erc20_total_tnx,0.0295790157227735,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+erc20_unique_received_token_name,0.02071314997954563,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+max_value_received_eth,0.019689805096148722,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+min_value_sent_eth,0.01109598537878555,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+avg_min_between_sent_tnx,0.00781692691245161,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+received_tnx,0.004458597377372855,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+sent_tnx,0.003713879566561554,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+unique_sent_to_addresses,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+max_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+avg_value_received_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+created_contracts_count,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+total_ether_sent,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+avg_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+erc20_unique_sent_addr,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+erc20_unique_received_addr,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+erc20_unique_sent_token_name,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Reduced 21 Features (No Redundancy)
+time_diff_first_last_mins,0.1549643833486784,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+total_ether_received,0.1234604556209798,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+avg_value_received_eth,0.10957561921462342,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+avg_min_between_received_tnx,0.08796657379794787,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+unique_received_from_addresses,0.07223749402129317,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+total_ether_sent,0.060047889158379206,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+min_value_received_eth,0.050318095952071845,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+max_value_received_eth,0.04942492237578632,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+received_tnx,0.046003976628009216,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+sent_tnx,0.04128443148066925,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+avg_min_between_sent_tnx,0.03365454027903217,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+erc20_total_tnx,0.031141320796808255,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+max_value_sent_eth,0.028672483274259943,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+min_value_sent_eth,0.025253730023373853,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+erc20_unique_received_addr,0.022862099230860352,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+erc20_unique_received_token_name,0.021531788059194933,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+avg_value_sent_eth,0.01746212757462845,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+created_contracts_count,0.008017858048229022,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+unique_sent_to_addresses,0.006340881797149974,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+erc20_unique_sent_token_name,0.0054615666383847,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+erc20_unique_sent_addr,0.004317762679639894,Tree Gini Importance,Random Forest (100 Trees),Reduced 21 Features (No Redundancy)
+unique_received_from_addresses,0.29794721407624625,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+time_diff_first_last_mins,0.1824046920821114,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+erc20_total_tnx,0.1325513196480937,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+total_ether_received,0.07565982404692083,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+avg_value_received_eth,0.0686217008797654,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+received_tnx,0.049266862170087966,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+sent_tnx,0.03519061583577709,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+avg_min_between_received_tnx,0.030498533724340193,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+avg_min_between_sent_tnx,0.029325513196480968,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+min_value_received_eth,0.019354838709677427,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+erc20_unique_received_token_name,0.017008797653958983,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+min_value_sent_eth,0.017008797653958983,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+total_ether_sent,0.014662756598240533,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+avg_value_sent_eth,0.010557184750733204,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+erc20_unique_sent_addr,0.009384164222873883,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+unique_sent_to_addresses,0.00469208211143699,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+erc20_unique_sent_token_name,0.002346041055718543,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+max_value_sent_eth,0.0017595307917888832,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+erc20_unique_received_addr,0.0011730205278592234,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+created_contracts_count,0.0005865102639296596,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+max_value_received_eth,0.0,Validation Permutation Importance,HistGradientBoosting,Reduced 21 Features (No Redundancy)
+time_diff_first_last_mins,0.22650287197421942,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+avg_value_sent_eth,0.10350725350363801,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+total_transactions_count,0.0998560848952552,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+sent_tnx,0.0905515225376903,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+unique_received_from_addresses,0.07490472102124741,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+received_tnx,0.07137938799809342,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+avg_value_received_eth,0.06856978631525612,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+total_ether_balance,0.06607336759971544,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+min_value_sent_eth,0.04720784612843689,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+max_value_received_eth,0.04587264302152426,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+unique_sent_to_addresses,0.029750154466671716,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+avg_min_between_sent_tnx,0.029363898071175412,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+avg_min_between_received_tnx,0.018886184816123263,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+total_ether_received,0.00924493588827573,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+min_value_received_eth,0.006523191628377765,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+max_value_sent_eth,0.00599060449673381,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+created_contracts_count,0.004641620129366488,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+total_ether_sent,0.0011739255081994182,Normalized |Logistic Regression Coef|,"Logistic Regression (L2, Balanced)",Ablation 18 Features (Base ETH Only)
+total_ether_received,0.3828643086771506,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+time_diff_first_last_mins,0.2326000059932496,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+unique_received_from_addresses,0.15037160291786628,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+min_value_received_eth,0.07928532996279476,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+total_ether_balance,0.05501360391461096,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+min_value_sent_eth,0.03305359332105094,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+avg_min_between_received_tnx,0.029726177008640362,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+total_transactions_count,0.016022416758422673,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+avg_value_received_eth,0.011717773985998024,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+sent_tnx,0.005245307141456462,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+avg_min_between_sent_tnx,0.0026204606921030804,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+received_tnx,0.001479419626656305,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+created_contracts_count,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+unique_sent_to_addresses,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+max_value_received_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+max_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+avg_value_sent_eth,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+total_ether_sent,0.0,Tree Gini Importance,Decision Tree (Max Depth 6),Ablation 18 Features (Base ETH Only)
+time_diff_first_last_mins,0.154444030816962,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+avg_value_received_eth,0.12368474472427987,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+total_ether_received,0.10493343888425238,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+avg_min_between_received_tnx,0.09793306896505748,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+unique_received_from_addresses,0.08041201511373362,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+max_value_received_eth,0.06483147341622252,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+total_ether_sent,0.062266707294379185,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+total_ether_balance,0.052537440318714976,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+total_transactions_count,0.0466654743837056,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+min_value_received_eth,0.04279200435414593,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+sent_tnx,0.03428995222964382,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+received_tnx,0.033139261387898584,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+avg_min_between_sent_tnx,0.031468602046929146,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+min_value_sent_eth,0.021253547729578708,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+avg_value_sent_eth,0.021246970742553134,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+max_value_sent_eth,0.015897818414866448,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+unique_sent_to_addresses,0.006694009173333994,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+created_contracts_count,0.005509440003742656,Tree Gini Importance,Random Forest (100 Trees),Ablation 18 Features (Base ETH Only)
+unique_received_from_addresses,0.42857142857142816,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+total_transactions_count,0.13706563706563707,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+time_diff_first_last_mins,0.11132561132561124,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+total_ether_received,0.07979407979407983,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+avg_value_received_eth,0.06756756756756761,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+total_ether_balance,0.04954954954954961,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+avg_min_between_received_tnx,0.04826254826254823,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+min_value_received_eth,0.037966537966538066,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+avg_min_between_sent_tnx,0.012870012870012812,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+min_value_sent_eth,0.010296010296010375,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+received_tnx,0.005791505791505771,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+total_ether_sent,0.005791505791505771,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+max_value_sent_eth,0.0032175032175033344,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+sent_tnx,0.0019305019305020641,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+max_value_received_eth,0.0,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+unique_sent_to_addresses,0.0,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+created_contracts_count,0.0,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
+avg_value_sent_eth,0.0,Validation Permutation Importance,HistGradientBoosting,Ablation 18 Features (Base ETH Only)
